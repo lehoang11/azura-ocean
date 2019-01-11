@@ -7,6 +7,8 @@ public interface AuthRepository extends PagingAndSortingRepository<Auth, Long> {
 
     Auth findByUsername(String var1);
 
+    Auth findByEmail(String var1);
+
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);

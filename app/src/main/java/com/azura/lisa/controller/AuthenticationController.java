@@ -82,6 +82,18 @@ public class AuthenticationController {
                 messages.get("response.successful"));
     }
 
+    /* API HV signup */
+    @RequestMapping(value = "/user/signup", method = RequestMethod.POST)
+    @ApiOperation(value = " API login", response = ApiDataResponse.class)
+    public ApiDataResponse signup(@RequestBody User userModel) throws BusinessException {
+        log.info("Begin signup: ");
+        log.info("email: " + userModel.getEmail());
+        userService.saveUser(userModel);
+        //userDTO.buildToken();
+        return new ApiDataResponse(true, HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
+
     /* API Thông tin cá nhân HV */
     @RequestMapping(value = "/user/verify/token", method = RequestMethod.POST)
     @ApiOperation(value = "API lấy thông tin HV", response = UserDTO.class)

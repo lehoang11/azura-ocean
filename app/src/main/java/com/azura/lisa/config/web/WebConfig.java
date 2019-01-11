@@ -76,15 +76,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 							"/public/**", "/css/**",
 							"/js/**", "/images/**", "/index.html", "/", "/page/**",
 							"/api/user/login",
-							"/api/mobile/manager/login",
-							"/api/mobile/user/verifyToken",
-							"/api/portal/login",
-							"/api/ws/fullClassAlert",
-							"/api/docs",
-							"/api/cara/*",
-							"/api/mobile/notify/download/error/student/**",
+							"/api/manager/login",
+							"/api/user/verifyToken",
+							"/api/notify/download/error/student/**",
 							"/api/mobile/notify/download/excel_form",
-							"/api/excel/export/logMoveUser","/api/lehoang/excel",
+							"/api/user/signup","/api/lehoang/excel",
 							"/img/**"
 						})
 				.permitAll()

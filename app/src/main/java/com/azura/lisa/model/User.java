@@ -7,18 +7,11 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "user", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
-                "username"
-        }),
-        @UniqueConstraint(columnNames = {
-                "email"
-        })
-})
-public class User extends GeneralModel {
+@Table(name = "user")
+public class User  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -36,18 +29,11 @@ public class User extends GeneralModel {
     @Column(nullable = false)
     private String password;
 
-    public User() {
+    @Column(name = "created_at", nullable = false)
+    private Long createdAt;
 
-    }
-
-    public User(Long id, String username, String firstName, String lastName, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
+    @Column(name = "updated_at", nullable = false)
+    private Long updatedAt;
 
     public Long getId() {
         return id;
@@ -97,5 +83,19 @@ public class User extends GeneralModel {
         this.password = password;
     }
 
+    public Long getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(Long createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Long getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Long updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

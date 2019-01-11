@@ -33,7 +33,7 @@ public class Auth {
         return mapper.writeValueAsString(Auth);
     }
 
-    @ConstructorProperties({"id", "username", "password"})
+    @ConstructorProperties({"id", "email", "username", "password"})
     public Auth(long id, String email, String username, String password) {
         this.id = id;
         this.email = email;
