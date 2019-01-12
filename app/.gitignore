@@ -3,4 +3,6 @@ logs/
 target/
 logs/
 .idea/
+/resources/application.properties
+resources/application.properties
 
