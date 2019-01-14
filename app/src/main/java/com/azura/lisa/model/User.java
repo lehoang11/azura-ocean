@@ -1,6 +1,6 @@
 package com.azura.lisa.model;
 
-import com.azura.common.model.GeneralModel;
+import com.azura.common.model.TimestampModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "user")
-public class User  {
+public class User extends TimestampModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,6 @@ public class User  {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "created_at", nullable = false)
-    private Long createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Long updatedAt;
 
     public Long getId() {
         return id;
@@ -83,19 +78,5 @@ public class User  {
         this.password = password;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Long createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Long updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

@@ -5,10 +5,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
-import java.time.Instant;
+import javax.persistence.*;
+import java.util.Date;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -16,27 +14,32 @@ import java.time.Instant;
         value = {"createdAt", "updatedAt"},
         allowGetters = true
 )
-public class GeneralModel implements Serializable {
 
+public abstract class TimestampModel  {
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at" , nullable = false,  updatable=false)
     @CreatedDate
-    private Instant createdAt;
+    private Date createdAt = new Date();
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false, insertable=false)
     @LastModifiedDate
-    private Instant updatedAt;
+    private Date updatedAt = new Date();
 
-    public Instant getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

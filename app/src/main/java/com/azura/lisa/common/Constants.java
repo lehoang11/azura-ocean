@@ -10,9 +10,9 @@ public interface Constants {
     
     String SPACE_STRING = " ";
 
-    String DATE_FORMAT = "dd/MM/yyyy";
+    String DATE_FORMAT = "dd/MM/yyyy/MM/dd";
     
-    String DATETIME_FORMAT = "dd/MM/yyyy_HH:mm:ss";
+    String DATETIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
     
     String TIME_FORMAT = "HH:mm:ss";
 
