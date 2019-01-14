@@ -43,15 +43,12 @@ public class CookieAuthenticationFilter extends GenericFilterBean {
         if (request.getRequestURI().toLowerCase().startsWith("/public")) {
             return null;
         } else {
-            String username = this.getCookie("currentUserName", request);
+            String email = this.getCookie("currentUserEmail", request);
             String password = this.getCookie("currentUserPassword", request);
-            log.info("(getAuthentication)username: " + username);
-            if (username != null && password != null) {
+            log.info("(getAuthentication)email: " + email);
+            if (email != null && password != null) {
                 try {
-                    Auth auth = this.authService.findByUsername(username);
-                    if (auth == null && username.contains("%40")) {
-                        auth = this.authService.findByUsername(username.replace("%40", "@"));
-                    }
+                    Auth auth = this.authService.findByEmail(email);
 
                     if (auth != null && this.passwordEncoder.matches(password, auth.getPassword())) {
                         List<GrantedAuthority> authorities = new ArrayList();

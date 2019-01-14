@@ -11,11 +11,11 @@ public class PasswordEncoderImpl implements PasswordEncoder {
     }
 
     public String encode(CharSequence rawPassword) {
-        return BCrypt.hashpw(rawPassword.toString(), BCrypt.gensalt(12)).replace("$2a$", "$2y$");
+        return BCrypt.hashpw(rawPassword.toString(), BCrypt.gensalt(12)).replace("$2a$", "$2j$");
     }
 
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        String javaEncodedPassword = encodedPassword.replace("$2y$", "$2a$");
+        String javaEncodedPassword = encodedPassword.replace("$2j$", "$2a$");
         return BCrypt.checkpw(rawPassword.toString(), javaEncodedPassword);
     }
 }

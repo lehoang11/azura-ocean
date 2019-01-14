@@ -21,22 +21,16 @@ public class AuthServiceImpl implements AuthService {
     public AuthServiceImpl() {
     }
 
-    public Auth findByUsername(String username) {
-        log.info("(findByUsername)username:" + username);
-        return this.authRepository.findByUsername(username);
-    }
+
 
     public Auth findByEmail(String email) {
         log.info("(findByEmail)email:" + email);
         return this.authRepository.findByEmail(email);
     }
 
-    public Boolean existsByUsername(String username){return authRepository.existsByUsername(username);}
-
     public  Boolean existsByEmail(String email){ return authRepository.existsByEmail(email); }
 
     public void Register(Auth user){
-        Auth newUser = new Auth();
         user.setEmail(user.getEmail());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         authRepository.save(user);

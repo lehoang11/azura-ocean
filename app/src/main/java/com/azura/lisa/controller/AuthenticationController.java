@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.transaction.Transactional;
 
 @RestController
 @Slf4j
@@ -50,15 +49,13 @@ public class AuthenticationController {
     @ApiOperation(value = " API login", response = ApiDataResponse.class)
     public ApiDataResponse login(@RequestBody LoginRequest loginRequest) throws BusinessException {
         log.info("Begin login: ");
-        log.info("username: " + loginRequest.getUsername());
+        log.info("email: " + loginRequest.getEmail());
 
-        String userName = loginRequest.getUsername();
+        String email = loginRequest.getEmail();
         String password = loginRequest.getPassword();
         UserDTO userDTO = null;
-        if (StringUtils.isNotBlank(userName) && StringUtils.isNotBlank(password)) {
-            if (userName.contains("%40"))
-                userName = userName.replace("%40", "@");
-            Auth user = this.authService.findByUsername(userName);
+        if (StringUtils.isNotBlank(email) && StringUtils.isNotBlank(password)) {
+            Auth user = this.authService.findByEmail(email);
 
             if (user != null && this.passwordEncoder.matches(password, user.getPassword())) {
                 userDTO = userService.findUserById(user.getId());

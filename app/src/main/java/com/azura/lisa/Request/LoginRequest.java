@@ -8,8 +8,8 @@ import lombok.Data;
 @Builder
 public class LoginRequest {
 
-    @ApiModelProperty(value = "username")
-    private String username;
+    @ApiModelProperty(value = "email")
+    private String email;
 
     @ApiModelProperty(value = "password")
     private String password;

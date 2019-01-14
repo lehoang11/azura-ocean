@@ -20,7 +20,6 @@ public class Auth {
     @GeneratedValue( strategy = GenerationType.AUTO )
     private long id;
     private String email;
-    private String username;
     private String password;
 
     public static Auth fromString(String json) throws IOException {
@@ -33,11 +32,10 @@ public class Auth {
         return mapper.writeValueAsString(Auth);
     }
 
-    @ConstructorProperties({"id", "email", "username", "password"})
-    public Auth(long id, String email, String username, String password) {
+    @ConstructorProperties({"id", "email", "password"})
+    public Auth(long id, String email,  String password) {
         this.id = id;
         this.email = email;
-        this.username = username;
         this.password = password;
     }
 
@@ -53,20 +51,12 @@ public class Auth {
         this.email = email;
     }
 
-    public String getUsername() {
-        return this.username;
-    }
-
     public String getPassword() {
         return this.password;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -85,13 +75,13 @@ public class Auth {
             } else if (this.getId() != other.getId()) {
                 return false;
             } else {
-                Object this$username = this.getUsername();
-                Object other$username = other.getUsername();
-                if (this$username == null) {
-                    if (other$username != null) {
+                Object this$email = this.getEmail();
+                Object other$email = other.getEmail();
+                if (this$email == null) {
+                    if (other$email != null) {
                         return false;
                     }
-                } else if (!this$username.equals(other$username)) {
+                } else if (!this$email.equals(other$email)) {
                     return false;
                 }
 
@@ -119,15 +109,15 @@ public class Auth {
         int result = 1;
         long $id = this.getId();
         result = result * 59 + (int)($id >>> 32 ^ $id);
-        Object $username = this.getUsername();
-        result = result * 59 + ($username == null ? 43 : $username.hashCode());
+        Object $email = this.getEmail();
+        result = result * 59 + ($email == null ? 43 : $email.hashCode());
         Object $password = this.getPassword();
         result = result * 59 + ($password == null ? 43 : $password.hashCode());
         return result;
     }
 
     public String toString() {
-        return "Auth(id=" + this.getId() + ", username=" + this.getUsername() + ", password=" + this.getPassword() + ")";
+        return "Auth(id=" + this.getId() + ", email=" + this.getEmail() + ", password=" + this.getPassword() + ")";
     }
 
     public Auth() {

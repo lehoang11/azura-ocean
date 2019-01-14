@@ -14,7 +14,7 @@ import java.util.Collections;
 @Slf4j
 public class TokenAuthenticationHelper {
     static final long EXPIRATIONTIME = 864_000_000; // 10 days
-    static final String SECRET = "ix9O77EDipXKswqftzjx1Wr8MP0gpImT";
+    static final String SECRET = "jk9O55EDipXKswqftzjx1Wr8MP0gpImM";
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
