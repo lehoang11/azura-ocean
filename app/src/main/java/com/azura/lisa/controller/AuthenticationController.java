@@ -7,7 +7,7 @@ import com.azura.common.exception.AuthenticationException;
 import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ErrorInfo;
 import com.azura.common.exception.ExceptionCode;
-import com.azura.common.util.Messages;
+import com.azura.common.utils.Messages;
 import com.azura.lisa.Request.LoginRequest;
 import com.azura.lisa.dto.UserDTO;
 import com.azura.lisa.model.User;

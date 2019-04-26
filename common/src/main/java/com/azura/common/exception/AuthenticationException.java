@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class AuthenticationException extends Exception {
 
     private static final long serialVersionUID = 1L;
-    private String code;
+    private int code;
     private String message;
 
 }

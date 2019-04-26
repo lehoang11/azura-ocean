@@ -13,9 +13,15 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 public class ErrorInfo  implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
-    private String codeStr;
+    private int codeStr;
     private int code;
     private String message;
+
+    public ErrorInfo(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
 }

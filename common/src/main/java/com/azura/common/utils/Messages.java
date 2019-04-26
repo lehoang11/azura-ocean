@@ -1,4 +1,4 @@
-package com.azura.common.util;
+package com.azura.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

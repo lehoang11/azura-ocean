@@ -1,28 +1,35 @@
 package com.azura.common.exception;
 
 public interface ExceptionCode {
+    public static final Integer BAD_REQUEST = 300;
+    public static final Integer CONSTRAINT_VIOLATION = 301;
+    public static final Integer METHOD_ARGUMENT_TYPE_MISMATCH = 304;
+    public static final Integer ERROR_RUNTIME = 305;
 
-    public static final String BAD_REQUEST = "BAD_REQUEST";
-    public static final String CONSTRAINT_VIOLATION = "CONSTRAINT_VIOLATION";
-    public static final String METHOD_ARGUMENT_TYPE_MISMATCH = "METHOD_ARGUMENT_TYPE_MISMATCH";
-    public static final String ERROR_RUNTIME = "ERROR_RUNTIME";
-
+    // From 400
     public interface Authentication {
-        public static final String AUTHENTICATION_USER_PASSWORD_INVALID = "AUTHENTICATION_USER_PASSWORD_INVALID";
-        public static final String AUTHENTICATION_USER_INACTIVE = "AUTHENTICATION_USER_INACTIVE";
-        public static final String AUTHENTICATION_CATPCHAR_IS_REQUIRED = "AUTHENTICATION_CATPCHAR_IS_REQUIRED";
-        public static final String AUTHENTICATION_CATPCHAR_IS_INVALID = "AUTHENTICATION_CATPCHAR_IS_INVALID";
-        public static final String REQUEST_INVALID = "REQUEST_INVALID";
-        public static final String REQUEST_SESSION_IS_INVALID = "REQUEST_SESSION_IS_INVALID";
-        public static final String AUTHENTICATION_TOKEN_INVALID = "AUTHENTICATION_TOKEN_INVALID";
+        public static final Integer AUTHENTICATION_USER_PASSWORD_INVALID = 400;
+        public static final Integer AUTHENTICATION_USER_INACTIVE = 401;
+        public static final Integer AUTHENTICATION_CATPCHAR_IS_REQUIRED = 402;
+        public static final Integer AUTHENTICATION_CATPCHAR_IS_INVALID = 403;
+        public static final Integer REQUEST_INVALID = 404;
+        public static final Integer REQUEST_SESSION_IS_INVALID = 405;
+        public static final Integer AUTHENTICATION_TOKEN_INVALID = 406;
     }
 
+    // From 500
     public interface User {
-        public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
+        public static final Integer USER_NOT_FOUND = 500;
     }
 
+    // From 600
     public interface UploadFile {
-        public static final String UPLOAD_FILE_ERROR = "UPLOAD_FILE_ERROR";
+        public static final Integer UPLOAD_FILE_ERROR = 600;
+    }
+
+    public  interface Edu {
+        public static final Integer EDU_NOT_FOUND = 5;
+
     }
 
 }

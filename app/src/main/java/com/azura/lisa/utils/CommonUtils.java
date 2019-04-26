@@ -5,8 +5,10 @@ import com.azura.lisa.common.Constants;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.DateFormat;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class CommonUtils {
     public static String convertDateToString(Long unixTimestamp, String format) {
@@ -30,6 +32,16 @@ public class CommonUtils {
         } catch (UnsupportedEncodingException e) {
             return null;
         }
+    }
+    public static String covertStringToURL(String str) {
+        try {
+            String temp = Normalizer.normalize(str, Normalizer.Form.NFD);
+            Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+            return pattern.matcher(temp).replaceAll("").toLowerCase().replaceAll(" ", "-").replaceAll("đ", "d");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

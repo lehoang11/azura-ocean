@@ -1,6 +1,6 @@
 package com.azura.common.common;
 
-import com.azura.common.util.Messages;
+import com.azura.common.utils.Messages;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -19,7 +19,8 @@
 		<module>app</module>
 		<module>common</module>
 		<module>auth-core</module>
-	</modules>
+        <module>tutorial</module>
+    </modules>
 
 	<packaging>pom</packaging>
 

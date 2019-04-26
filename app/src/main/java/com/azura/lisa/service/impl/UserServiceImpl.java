@@ -4,7 +4,9 @@ import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ExceptionCode;
 import com.azura.lisa.dto.UserDTO;
 import com.azura.lisa.model.User;
+import com.azura.lisa.model.edu.Edu;
 import com.azura.lisa.repository.UserRepository;
+import com.azura.lisa.service.EduService;
 import com.azura.lisa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,12 +21,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    EduService eduService;
+
     @Override
     public UserDTO findUserById(Long userId) throws BusinessException{
         UserDTO userDTO = userRepository.findUserById(userId);
         if (userDTO == null) {
             throw new BusinessException(ExceptionCode.User.USER_NOT_FOUND, "user not found !");
         }
+        Edu eduDTO = eduService.findEduByUserId(userId);
+        userDTO.setEdu(eduDTO);
         return userDTO;
     }
 

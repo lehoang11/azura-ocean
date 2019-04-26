@@ -4,6 +4,7 @@ package com.azura.lisa.dto;
 import com.azura.lisa.Request.LoginRequest;
 import com.azura.lisa.model.User;
 import com.azura.lisa.config.TokenAuthenticationHelper;
+import com.azura.lisa.model.edu.Edu;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,7 @@ public class UserDTO {
     private String userName;
     private String email;
     private String token;
+    private Edu    edu;
 
     public UserDTO(Long id, String firstName, String lastName, String userName, String email) {
         super();

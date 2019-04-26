@@ -12,7 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
         "com.adonisle.auth.authen",
         "com.adonisle.auth.service",
         "com.azura.common",
-        "com.azura.lisa"
+        "com.azura.lisa",
+        "com.azura.tutorial",
 })
 @EnableAutoConfiguration(exclude = JpaRepositoriesAutoConfiguration.class)
 @Slf4j

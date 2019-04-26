@@ -8,6 +8,10 @@ import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import com.azura.common.exception.AuthenticationException;
+import com.azura.common.exception.BusinessException;
+import com.azura.common.exception.ErrorInfo;
+import com.azura.common.exception.ExceptionCode;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.TransactionSystemException;
@@ -19,11 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-//import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import com.topica.adapter.common.exception.AuthenticationException;
-import com.topica.adapter.common.exception.BusinessException;
-import com.topica.adapter.common.exception.ErrorInfo;
-import com.topica.adapter.common.exception.ExceptionCode;
+
 
 @ControllerAdvice
 @RestController

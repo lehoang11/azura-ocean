@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class BusinessException extends Exception {
 
     private static final long serialVersionUID = 1L;
-    private String code;
+    private Integer code;
     private String message;
 
 }

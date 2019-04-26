@@ -18,12 +18,13 @@ import javax.sql.DataSource;
         transactionManagerRef = "mysqlTransactionManager",
         basePackages = {
                 "com.azura.lisa.repository",
-                "com.adonisle.auth.repository"
+                "com.adonisle.auth.repository",
+                "com.azura.tutorial.repository"
         }
 )
 public class MysqlDbConfig extends DbConfig {
 
-    private String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"com.azura.lisa.model", "com.adonisle.auth.model"};
+    private String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"com.azura.lisa.model", "com.adonisle.auth.model","com.azura.tutorial.model",};
 
     {
         DB_URL = "mysql.db.url";

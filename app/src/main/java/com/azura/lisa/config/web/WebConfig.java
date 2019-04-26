@@ -74,14 +74,22 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 				.antMatchers(
 						new String[]{
 							"/public/**", "/css/**",
-							"/js/**", "/images/**", "/index.html", "/", "/page/**",
+							"/js/**",
+                                "/images/**",
+                                "/index.html",
+                                "/",
+                                "/page/**",
 							"/api/user/login",
 							"/api/manager/login",
+                                "/api/edu/show/**",
 							"/api/user/verifyToken",
 							"/api/notify/download/error/student/**",
 							"/api/mobile/notify/download/excel_form",
 							"/api/user/signup","/api/lehoang/excel",
-							"/img/**"
+							"/img/**",
+                                "/api/tutorial/show/**",
+								"/api/like/total",
+                                "/api/like/filter"
 						})
 				.permitAll()
 				.anyRequest().authenticated().and()
