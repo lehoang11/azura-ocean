@@ -15,14 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/like")
+@RequestMapping("/api/tutorialLike")
 @Api(value = "Tutorial Like", description = "Tutorial Information", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TutorialLikeController {
     @Autowired
@@ -32,8 +29,8 @@ public class TutorialLikeController {
     TutorialLikeService tutorialLikeService;
 
     /* API Created Edu */
-    @RequestMapping(value = "/tutorial", method = RequestMethod.POST)
-    @ApiOperation(value = " API create Edu", response = ApiDataResponse.class)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ApiOperation(value = " API create like tutorial", response = ApiDataResponse.class)
     public  ApiDataResponse tutorialLike(Authentication authentication, @RequestBody TutorialLike dataForm) throws AuthenticationException, BusinessException {
         log.info("Begin tutorial like: ");
         if (authentication == null || authentication.getPrincipal() == null) {
@@ -48,17 +45,33 @@ public class TutorialLikeController {
     @RequestMapping(value = "/total", method = RequestMethod.POST)
     @ApiOperation(value = " API create Edu", response = ApiDataResponse.class)
     public  ApiDataResponse tutorialLikeTotal( @RequestBody TutorialLike dataForm)  {
-        return new ApiDataResponse(tutorialLikeService.countTutorialByTutorialCode(dataForm.getTutorialCode()), HttpStatus.OK.value(),
+        return new ApiDataResponse(tutorialLikeService.countTutorialByTutorialId(dataForm.getTutorialId()), HttpStatus.OK.value(),
                 messages.get("response.successful"));
     }
 
     /* API Created Edu */
-    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
     @ApiOperation(value = " API create Edu", response = ApiDataResponse.class)
-    public  ApiDataResponse filter( @RequestBody TutorialLike dataForm) {
+    public  ApiDataResponse check(Authentication authentication ,@RequestParam("tutorialId") Long tutorialId,@RequestParam("userId") Long userId)throws AuthenticationException {
         log.info("Begin tutorial like: ");
+        if (authentication == null || authentication.getPrincipal() == null) {
+            throw new AuthenticationException(ExceptionCode.Authentication.AUTHENTICATION_TOKEN_INVALID,
+                    "Token is invalid !");
+        }
+        return new ApiDataResponse(tutorialLikeService.findByTutorialIdAndUserId(tutorialId, userId), HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
 
-        return new ApiDataResponse(tutorialLikeService.findByTutorialCodeAndUserId(dataForm.getTutorialCode(), dataForm.getUserId()), HttpStatus.OK.value(),
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = " API delete", response = ApiDataResponse.class)
+    public  ApiDataResponse delete(Authentication authentication, @PathVariable("id") long id) throws AuthenticationException, BusinessException {
+        log.info("Begin tutorial like delete: ");
+        if (authentication == null || authentication.getPrincipal() == null) {
+            throw new AuthenticationException(ExceptionCode.Authentication.AUTHENTICATION_TOKEN_INVALID,
+                    "Token is invalid !");
+        }
+        tutorialLikeService.deleteTutorialLike(id);
+        return new ApiDataResponse(true, HttpStatus.OK.value(),
                 messages.get("response.successful"));
     }
 }

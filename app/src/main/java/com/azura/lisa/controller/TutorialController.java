@@ -5,7 +5,6 @@ import com.azura.common.exception.AuthenticationException;
 import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ExceptionCode;
 import com.azura.common.utils.Messages;
-import com.azura.lisa.model.edu.Edu;
 import com.azura.tutorial.Request.TutorialRequest;
 import com.azura.tutorial.model.Tutorial;
 import com.azura.tutorial.service.TutorialService;
@@ -73,6 +72,27 @@ public class TutorialController {
         log.info("Begin get info tutorial: ");
         log.info("Tutorial: " + String.valueOf(id));
         return new ApiDataResponse(tutorialService.getTutorialById(id), HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
+
+    /* API show Tutorial */
+    @RequestMapping(value = "/show/eduId/{eduId}", method = RequestMethod.GET)
+    @ApiOperation(value = " API show Tutorial ", response = ApiDataResponse.class)
+    public  ApiDataResponse getTutorialByEduId(@PathVariable("eduId") long eduId)  {
+        log.info("Begin get info tutorial: ");
+        log.info("Tutorial: " + String.valueOf(eduId));
+        return new ApiDataResponse(tutorialService.filterTutorialByEduId(eduId), HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
+
+    /* API show Tutorial */
+    @RequestMapping(value = "/updateView", method = RequestMethod.GET)
+    @ApiOperation(value = " API show Tutorial ", response = ApiDataResponse.class)
+    public  ApiDataResponse updateView(@RequestParam("id") Long id) {
+        log.info("Begin get info tutorial updateView: ");
+        log.info("Tutorial updateView: " + String.valueOf(id));
+        tutorialService.updateView(id);
+        return new ApiDataResponse(true, HttpStatus.OK.value(),
                 messages.get("response.successful"));
     }
 }

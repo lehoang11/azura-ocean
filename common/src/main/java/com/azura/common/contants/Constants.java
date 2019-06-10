@@ -16,4 +16,6 @@ public interface Constants {
     String DATETIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
 
     String TIME_FORMAT = "HH:mm:ss";
+
+    Integer PAGE_SIZE = 20;
 }

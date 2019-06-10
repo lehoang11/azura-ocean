@@ -16,8 +16,8 @@ public class Material {
     @Column(nullable = false)
     private String content;
 
-    @Column(name = "tutorial_code")
-    private Long tutorialCode;
+    @Column(name = "tutorial_id")
+    private Long tutorialId;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Material {
         this.content = content;
     }
 
-    public Long getTutorialCode() {
-        return tutorialCode;
+    public Long getTutorialId() {
+        return tutorialId;
     }
 
-    public void setTutorialCode(Long tutorialCode) {
-        this.tutorialCode = tutorialCode;
+    public void setTutorialId(Long tutorialId) {
+        this.tutorialId = tutorialId;
     }
 }

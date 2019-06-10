@@ -80,16 +80,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                                 "/",
                                 "/page/**",
 							"/api/user/login",
-							"/api/manager/login",
                                 "/api/edu/show/**",
 							"/api/user/verifyToken",
-							"/api/notify/download/error/student/**",
-							"/api/mobile/notify/download/excel_form",
-							"/api/user/signup","/api/lehoang/excel",
+							"/api/user/signup",
 							"/img/**",
                                 "/api/tutorial/show/**",
+                                "/api/tutorial/updateView",
+								"/api/eduFollow/show/**",
 								"/api/like/total",
-                                "/api/like/filter"
+                                "/api/like/filter",
+								"/api/search",
+								"/api/tutorialComment/show/**"
 						})
 				.permitAll()
 				.anyRequest().authenticated().and()

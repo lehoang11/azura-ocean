@@ -5,6 +5,8 @@ public interface ExceptionCode {
     public static final Integer CONSTRAINT_VIOLATION = 301;
     public static final Integer METHOD_ARGUMENT_TYPE_MISMATCH = 304;
     public static final Integer ERROR_RUNTIME = 305;
+    public static final Integer NOT_FOUND = 404;
+
 
     // From 400
     public interface Authentication {
@@ -19,7 +21,7 @@ public interface ExceptionCode {
 
     // From 500
     public interface User {
-        public static final Integer USER_NOT_FOUND = 500;
+        public static final Integer USER_NOT_FOUND = 404;
     }
 
     // From 600
@@ -28,7 +30,7 @@ public interface ExceptionCode {
     }
 
     public  interface Edu {
-        public static final Integer EDU_NOT_FOUND = 5;
+        public static final Integer EDU_NOT_FOUND = 404;
 
     }
 

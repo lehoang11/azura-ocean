@@ -14,8 +14,8 @@ public class TutorialComment extends CreatedTimestampModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "tutorial_code")
-    private Long tutorialCode;
+    @Column(name = "tutorial_id")
+    private Long tutorialId;
 
     @Column(name = "user_id")
     private Long userId;
@@ -31,12 +31,12 @@ public class TutorialComment extends CreatedTimestampModel {
         this.id = id;
     }
 
-    public Long getTutorialCode() {
-        return tutorialCode;
+    public Long getTutorialId() {
+        return tutorialId;
     }
 
-    public void setTutorialCode(Long tutorialCode) {
-        this.tutorialCode = tutorialCode;
+    public void setTutorialId(Long tutorialId) {
+        this.tutorialId = tutorialId;
     }
 
     public Long getUserId() {

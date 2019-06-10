@@ -58,7 +58,7 @@ public class AuthenticationController {
             Auth user = this.authService.findByEmail(email);
 
             if (user != null && this.passwordEncoder.matches(password, user.getPassword())) {
-                userDTO = userService.findUserById(user.getId());
+                userDTO = userService.filterUserById(user.getId());
                 log.info("End login: successful");
             } else {
                 ErrorInfo errorInfo = new ErrorInfo(ExceptionCode.Authentication.AUTHENTICATION_USER_PASSWORD_INVALID, HttpStatus.UNAUTHORIZED.value(), "Username or password is invalid !");
@@ -100,7 +100,7 @@ public class AuthenticationController {
         }
 
         User user = (User) authentication.getPrincipal();
-        UserDTO userDTO = userService.findUserById(user.getId());
+        UserDTO userDTO = userService.filterUserById(user.getId());
 
         return new ApiDataResponse(userDTO, HttpStatus.OK.value(),
                 messages.get("response.successful"));

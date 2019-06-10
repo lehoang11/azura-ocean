@@ -8,9 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query(value = "SELECT NEW com.azura.lisa.dto.UserDTO ( u.id, u.username, u.firstName, u.lastName, u.email)"
+    @Query(value = "SELECT NEW com.azura.lisa.dto.UserDTO ( u.id, u.username,u.email, u.firstName, u.lastName,u.avatar,u.status,u.createdAt)"
             + " FROM User u "
             + "WHERE u.id = :userId")
     @RestResource(exported = false)
-    UserDTO findUserById(@Param("userId") Long userId);
+    UserDTO filterUserById(@Param("userId") Long userId);
+
+    User findById(Long id);
 }

@@ -10,8 +10,9 @@ public interface TutorialLikeService {
 
     TutorialLike saveTutorialLike(TutorialLike dataForm) throws BusinessException;
 
-    long countTutorialByTutorialCode(Long tutorialCode);
+    long countTutorialByTutorialId(Long tutorialId);
 
-    TutorialLike findByTutorialCodeAndUserId(Long tutorialCode, Long userId );
+    TutorialLike findByTutorialIdAndUserId(Long tutorialId, Long userId );
 
+    void deleteTutorialLike(Long id);
 }

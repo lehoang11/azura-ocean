@@ -1,16 +1,20 @@
 package com.azura.lisa.controller;
 
 import com.azura.common.common.ApiDataResponse;
+import com.azura.common.contants.Constants;
 import com.azura.common.exception.AuthenticationException;
 import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ExceptionCode;
 import com.azura.common.utils.Messages;
+import com.azura.lisa.Request.EduRequest;
 import com.azura.lisa.model.edu.Edu;
 import com.azura.lisa.service.EduService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -43,15 +47,15 @@ public class EduController {
     }
 
     /* API update Edu */
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ApiOperation(value = " API update Edu", response = ApiDataResponse.class)
-    public  ApiDataResponse eduUpdate(Authentication authentication, @RequestBody Edu eduForm) throws AuthenticationException, BusinessException {
+    public  ApiDataResponse eduUpdate(Authentication authentication, @RequestBody EduRequest eduRequest) throws AuthenticationException, BusinessException {
         log.info("Begin get info user: ");
         if (authentication == null || authentication.getPrincipal() == null) {
             throw new AuthenticationException(ExceptionCode.Authentication.AUTHENTICATION_TOKEN_INVALID,
                     "Token is invalid !");
         }
-        return new ApiDataResponse(eduService.updateEdu(eduForm), HttpStatus.OK.value(),
+        return new ApiDataResponse(eduService.updateEdu(eduRequest), HttpStatus.OK.value(),
                 messages.get("response.successful"));
     }
 
@@ -65,7 +69,7 @@ public class EduController {
     }
 
     /* API show Edu */
-    @RequestMapping(value = "/show/shortName/{shortName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/show/{shortName}", method = RequestMethod.GET)
     @ApiOperation(value = " API show Edu", response = ApiDataResponse.class)
     public  ApiDataResponse eduShow(@PathVariable("shortName") String shortName ) throws  BusinessException {
         log.info("Begin get info edu: ");
@@ -97,6 +101,17 @@ public class EduController {
     public  ApiDataResponse checkExistsByshortName(@PathVariable("shortName") String shortName ) throws  BusinessException {
         log.info("Begin get info edu: ");
         return new ApiDataResponse(eduService.existsEduByShortName(shortName), HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
+
+    /* API  eduFollow */
+    @RequestMapping(value = "/show/getListFollow", method = RequestMethod.GET)
+    @ApiOperation(value = " API  eduFollow", response = ApiDataResponse.class)
+    public  ApiDataResponse eduFollow(@RequestParam("userId") Long userId, @RequestParam(value="currentPage", defaultValue = "20 ") Integer currentPage) throws BusinessException {
+        log.info("Begin get edu Follow info: ");
+        log.info("userId: " + String.valueOf(userId));
+        Pageable pageRequest = new PageRequest(0, Constants.PAGE_SIZE);
+        return new ApiDataResponse(eduService.filterEduFollow(userId, pageRequest), HttpStatus.OK.value(),
                 messages.get("response.successful"));
     }
 

@@ -38,6 +38,9 @@ public class Edu extends TimestampModel {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "follow_total")
+    private Long followTotal;
+
     public Long getId() {
         return id;
     }
@@ -108,5 +111,13 @@ public class Edu extends TimestampModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getFollowTotal() {
+        return followTotal;
+    }
+
+    public void setFollowTotal(Long followTotal) {
+        this.followTotal = followTotal;
     }
 }

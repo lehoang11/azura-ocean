@@ -16,6 +16,9 @@ public interface Constants {
     
     String TIME_FORMAT = "HH:mm:ss";
 
+    Integer PAGE_SIZE = 20;
+
+
 
 
     

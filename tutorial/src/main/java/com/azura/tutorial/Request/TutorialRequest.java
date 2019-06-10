@@ -2,19 +2,16 @@ package com.azura.tutorial.Request;
 
 import com.azura.tutorial.model.Material;
 import com.azura.tutorial.model.Tutorial;
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class TutorialRequest {
 
     private Tutorial tutorial;
     private Material material;
 
-    public TutorialRequest() {
-        super();
-    }
 
     public TutorialRequest(Tutorial tutorial, Material material) {
         this.tutorial = tutorial;
