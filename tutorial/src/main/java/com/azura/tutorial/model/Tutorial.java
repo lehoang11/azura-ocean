@@ -47,6 +47,12 @@ public class Tutorial extends TimestampModel {
     @Column(name = "status")
     private int status;
 
+    @Column(name = "vcr_type")
+    private String vcrType;
+
+    @Column(name = "media_url")
+    private String medialUrl;
+
     public Long getId() {
         return id;
     }
@@ -142,4 +148,22 @@ public class Tutorial extends TimestampModel {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public String getVcrType() {
+        return vcrType;
+    }
+
+    public void setVcrType(String vcrType) {
+        this.vcrType = vcrType;
+    }
+
+    public String getMedialUrl() {
+        return medialUrl;
+    }
+
+    public void setMedialUrl(String medialUrl) {
+        this.medialUrl = medialUrl;
+    }
+
+
 }

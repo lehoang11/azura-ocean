@@ -86,6 +86,17 @@ public class TutorialController {
     }
 
     /* API show Tutorial */
+    @RequestMapping(value = "/getUpdateId/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = " API show Tutorial ", response = ApiDataResponse.class)
+    public  ApiDataResponse getTutorialUpdateById( @PathVariable("id") long id)  {
+        log.info("Begin get info tutorial: ");
+        log.info("Tutorial: " + String.valueOf(id));
+
+        return new ApiDataResponse(tutorialService.getTutorialUpdateById(id), HttpStatus.OK.value(),
+                messages.get("response.successful"));
+    }
+
+    /* API show Tutorial */
     @RequestMapping(value = "/updateView", method = RequestMethod.GET)
     @ApiOperation(value = " API show Tutorial ", response = ApiDataResponse.class)
     public  ApiDataResponse updateView(@RequestParam("id") Long id) {

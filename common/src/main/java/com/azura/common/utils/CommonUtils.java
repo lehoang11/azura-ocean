@@ -45,4 +45,34 @@ public class CommonUtils {
         return "";
     }
 
+    public static String getExtensionMedia(String urlStr) {
+
+        String fileExtension = urlStr.substring(urlStr.lastIndexOf(".") + 1);
+
+        return fileExtension.toLowerCase();
+
+    }
+
+    public static String getTypeMedia(String mediaType){
+        if(Constants.mediaVideo.contains(mediaType)) return "VIDEO";
+
+        if(Constants.mediaMp3.contains(mediaType)) return "MP3";
+
+        return "NONE";
+
+    }
+
+    public static String getTuListCode(){
+        String s = "";
+        double d;
+        for (int i = 1; i <= 16; i++) {
+            d = Math.random() * 10;
+            s = s + ((int)d);
+            if (i % 4 == 0 && i != 16) {
+                s = s + "-";
+            }
+        }
+        return s;
+    }
+
 }

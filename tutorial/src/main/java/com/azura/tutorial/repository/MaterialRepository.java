@@ -4,4 +4,7 @@ import com.azura.tutorial.model.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MaterialRepository extends JpaRepository<Material, Long> {
+    Material findById(Long id);
+
+    Material findByTutorialId(Long id);
 }

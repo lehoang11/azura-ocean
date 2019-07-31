@@ -21,6 +21,8 @@ public interface TutorialService {
 
     TutorialDTO getTutorialById(Long id);
 
+    TutorialRequest getTutorialUpdateById(Long id);
+
     Page<TutorialDTO>  filterTutorialByEduId(Long eduId);
 
     Page<TutorialDTO>  filterTutorialByEduShortName(String eduShortName);

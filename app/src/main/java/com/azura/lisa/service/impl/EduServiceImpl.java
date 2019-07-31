@@ -2,12 +2,12 @@ package com.azura.lisa.service.impl;
 
 import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ExceptionCode;
+import com.azura.common.utils.CommonUtils;
 import com.azura.lisa.Request.EduRequest;
 import com.azura.lisa.dto.edu.EduDTO;
 import com.azura.lisa.model.edu.Edu;
 import com.azura.lisa.repository.EduRepository;
 import com.azura.lisa.service.EduService;
-import com.azura.lisa.utils.CommonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

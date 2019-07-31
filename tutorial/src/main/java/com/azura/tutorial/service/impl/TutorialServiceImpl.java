@@ -3,7 +3,6 @@ package com.azura.tutorial.service.impl;
 import com.azura.common.exception.BusinessException;
 import com.azura.common.exception.ExceptionCode;
 import com.azura.common.utils.CommonUtils;
-import com.azura.common.utils.TutorialUtils;
 import com.azura.tutorial.Request.TutorialRequest;
 import com.azura.tutorial.dto.TutorialDTO;
 import com.azura.tutorial.model.Material;
@@ -17,7 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 
 @Service
@@ -33,21 +32,52 @@ public class TutorialServiceImpl implements TutorialService {
     public TutorialRequest saveTutorial(TutorialRequest dataForm) throws BusinessException {
         Tutorial tutorialModel = dataForm.getTutorial();
         Material materialModel = dataForm.getMaterial();
-        tutorialModel.setShortName(CommonUtils.covertStringToURL(tutorialModel.getName()));
-        //tutorialModel.setTutorialCode(TutorialUtils.generalCode(tutorialModel.getEduId()));
-        tutorialModel.setViewTotal(0l);
-        tutorialModel.setLikeTotal(0l);
-        Tutorial tutorialNew = tutorialRepository.save(tutorialModel);
-        if (tutorialNew == null) throw new BusinessException(ExceptionCode.Edu.EDU_NOT_FOUND, "Created fail !");
-        TutorialRequest tutorialData = new  TutorialRequest();
-        tutorialData.setTutorial(tutorialNew);
-        if (materialModel != null) {
+
+        if(tutorialModel.getId() != null){
+            TutorialRequest tutorialData = new  TutorialRequest();
+
+            Tutorial tutorial = tutorialRepository.findById(tutorialModel.getId());
+            tutorial.setShortName(CommonUtils.covertStringToURL(tutorialModel.getName()));
+            String mediaType = CommonUtils.getExtensionMedia(tutorialModel.getMedialUrl());
+            tutorialModel.setVcrType(CommonUtils.getTypeMedia(mediaType));
+            Tutorial tutorialUp = tutorialRepository.save(tutorial);
+
+            if (tutorialUp == null) throw new BusinessException(ExceptionCode.Edu.EDU_NOT_FOUND, "Update fail !");
+            tutorialData.setTutorial(tutorialUp);
+
+            Material material = materialRepository.findByTutorialId(tutorialModel.getId());
+
+            if(material !=null){
+                material.setContent(materialModel.getContent());
+                Material MaterialUp = materialRepository.save(material);
+                tutorialData.setMaterial(MaterialUp);
+            }else {
+                materialModel.setTutorialId(tutorial.getId());
+                Material MaterialUp = materialRepository.save(materialModel);
+                tutorialData.setMaterial(MaterialUp);
+            }
+
+            return tutorialData;
+        }else {
+
+            TutorialRequest tutorialData = new  TutorialRequest();
+            tutorialModel.setShortName(CommonUtils.covertStringToURL(tutorialModel.getName()));
+            tutorialModel.setViewTotal(0l);
+            tutorialModel.setLikeTotal(0l);
+
+            String mediaType = CommonUtils.getExtensionMedia(tutorialModel.getMedialUrl());
+            tutorialModel.setVcrType(CommonUtils.getTypeMedia(mediaType));
+            Tutorial tutorialNew = tutorialRepository.save(tutorialModel);
+            if (tutorialNew == null) throw new BusinessException(ExceptionCode.Edu.EDU_NOT_FOUND, "Created fail !");
+
             materialModel.setTutorialId(tutorialNew.getId());
             Material materialNew = materialRepository.save(materialModel);
+
+            tutorialData.setTutorial(tutorialNew);
             tutorialData.setMaterial(materialNew);
+            return tutorialData;
         }
 
-        return tutorialData;
     }
 
     @Override
@@ -69,6 +99,17 @@ public class TutorialServiceImpl implements TutorialService {
     public TutorialDTO getTutorialById(Long id){
         return tutorialRepository.getTutorialById(id);
     }
+
+    @Override
+    public TutorialRequest getTutorialUpdateById(Long id){
+        Tutorial tutorial = tutorialRepository.findById(id);
+        Material material = materialRepository.findByTutorialId(tutorial.getId());
+        TutorialRequest tutorialRequest = new TutorialRequest();
+        tutorialRequest.setTutorial(tutorial);
+        tutorialRequest.setMaterial(material);
+        return tutorialRequest;
+    }
+
 
     @Override
     public Page<TutorialDTO>  filterTutorialByEduId(Long eduId){
