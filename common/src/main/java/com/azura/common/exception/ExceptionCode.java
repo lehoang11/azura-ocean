@@ -6,6 +6,7 @@ public interface ExceptionCode {
     public static final Integer METHOD_ARGUMENT_TYPE_MISMATCH = 304;
     public static final Integer ERROR_RUNTIME = 305;
     public static final Integer NOT_FOUND = 404;
+    public static final Integer ERROR_SERVER = 500;
 
 
     // From 400

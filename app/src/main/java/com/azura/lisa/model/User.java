@@ -42,6 +42,4 @@ public class User extends TimestampModel {
     private int status;
 
 
-
-
 }

@@ -17,7 +17,7 @@ public class TutorialDTO {
     private  String  avatar;
     private  String  video;
     private  String  keyword;
-    private  Long    tutorialCode;
+    private  String  generalCode;
     private  Long    viewTotal;
     private  Long    likeTotal;
     private  int     status;
@@ -31,7 +31,7 @@ public class TutorialDTO {
     private String medialUrl;
 
 
-    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, Long tutorialCode, Long viewTotal, Long likeTotal, int status, Date createdAt, String content, Long eduId, String eduName, String eduShortName, String eduAvatar) {
+    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, String generalCode, Long viewTotal, Long likeTotal, int status, Date createdAt, String content, Long eduId, String eduName, String eduShortName, String eduAvatar) {
         this.id = id;
         this.name = name;
         this.shortName = shortName;
@@ -39,7 +39,7 @@ public class TutorialDTO {
         this.avatar = avatar;
         this.medialUrl = medialUrl;
         this.keyword = keyword;
-        this.tutorialCode = tutorialCode;
+        this.generalCode = generalCode;
         this.viewTotal = viewTotal;
         this.likeTotal = likeTotal;
         this.status = status;
@@ -51,7 +51,7 @@ public class TutorialDTO {
         this.eduAvatar = eduAvatar;
     }
 
-    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, Long tutorialCode, Long viewTotal, Long likeTotal, int status, Date createdAt, Long eduId, String eduName, String eduShortName, String eduAvatar) {
+    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, String generalCode, Long viewTotal, Long likeTotal, int status, Date createdAt, Long eduId, String eduName, String eduShortName, String eduAvatar) {
         this.id = id;
         this.name = name;
         this.shortName = shortName;
@@ -59,7 +59,7 @@ public class TutorialDTO {
         this.avatar = avatar;
         this.medialUrl = medialUrl;
         this.keyword = keyword;
-        this.tutorialCode = tutorialCode;
+        this.generalCode = generalCode;
         this.viewTotal = viewTotal;
         this.likeTotal = likeTotal;
         this.status = status;
@@ -72,7 +72,7 @@ public class TutorialDTO {
 
 
     // da du
-    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, Long tutorialCode, Long viewTotal, Long likeTotal, int status, Date createdAt, String content, Long eduId, String eduName, String eduShortName, String eduAvatar, String vcrType ) {
+    public TutorialDTO(Long id, String name, String shortName, Long userId, String avatar, String medialUrl, String keyword, String generalCode, Long viewTotal, Long likeTotal, int status, Date createdAt, String content, Long eduId, String eduName, String eduShortName, String eduAvatar, String vcrType ) {
         this.id = id;
         this.name = name;
         this.shortName = shortName;
@@ -80,7 +80,7 @@ public class TutorialDTO {
         this.avatar = avatar;
         this.medialUrl = medialUrl;
         this.keyword = keyword;
-        this.tutorialCode = tutorialCode;
+        this.generalCode = generalCode;
         this.viewTotal = viewTotal;
         this.likeTotal = likeTotal;
         this.status = status;

@@ -19,6 +19,7 @@ public class Material {
     @Column(name = "tutorial_id")
     private Long tutorialId;
 
+
     public Long getId() {
         return id;
     }
@@ -42,4 +43,5 @@ public class Material {
     public void setTutorialId(Long tutorialId) {
         this.tutorialId = tutorialId;
     }
+
 }

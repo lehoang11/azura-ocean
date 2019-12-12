@@ -35,8 +35,8 @@ public class Tutorial extends TimestampModel {
     @Column(name = "keyword")
     private String keyword;
 
-    @Column(name = "tutorial_code")
-    private Long tutorialCode;
+    @Column(name = "general_code")
+    private String generalCode;
 
     @Column(name = "view_total")
     private Long viewTotal;
@@ -117,12 +117,12 @@ public class Tutorial extends TimestampModel {
         this.keyword = keyword;
     }
 
-    public Long getTutorialCode() {
-        return tutorialCode;
+    public String getGeneralCode() {
+        return generalCode;
     }
 
-    public void setTutorialCode(Long tutorialCode) {
-        this.tutorialCode = tutorialCode;
+    public void setGeneralCode(String generalCode) {
+        this.generalCode = generalCode;
     }
 
     public Long getViewTotal() {

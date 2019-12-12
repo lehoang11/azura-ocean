@@ -84,6 +84,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 							"/api/user/verifyToken",
 							"/api/user/signup",
 							"/img/**",
+								"/api/lehoang/excel/**",
                                 "/api/tutorial/show/**",
                                 "/api/tutorial/updateView",
 								"/api/eduFollow/show/**",

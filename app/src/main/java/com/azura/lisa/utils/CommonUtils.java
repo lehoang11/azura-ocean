@@ -7,11 +7,11 @@ import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
 
 public class CommonUtils {
-
 
 
     public static String convertDateToString(Long unixTimestamp, String format) {
@@ -36,7 +36,6 @@ public class CommonUtils {
             return null;
         }
     }
-
 
 
 

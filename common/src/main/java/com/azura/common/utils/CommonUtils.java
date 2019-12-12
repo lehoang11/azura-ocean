@@ -7,10 +7,13 @@ import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
 
 public class CommonUtils {
+
+    private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZzyxwvutsrqponmlkjihgfedcba";
 
     public static String convertDateToString(Long unixTimestamp, String format) {
         if(unixTimestamp == null)
@@ -73,6 +76,18 @@ public class CommonUtils {
             }
         }
         return s;
+    }
+
+    public static String randomAlphaNumeric(int count) {
+        StringBuilder builder = new StringBuilder();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        Calendar cal = Calendar.getInstance();
+        String dateFormat = formatter.format(cal.getTime()).concat("-");
+        while (count-- != 0) {
+            int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
+            builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+        }
+        return dateFormat.concat(builder.toString());
     }
 
 }

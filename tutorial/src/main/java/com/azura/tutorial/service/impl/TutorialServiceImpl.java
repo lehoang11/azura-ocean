@@ -64,6 +64,7 @@ public class TutorialServiceImpl implements TutorialService {
             tutorialModel.setShortName(CommonUtils.covertStringToURL(tutorialModel.getName()));
             tutorialModel.setViewTotal(0l);
             tutorialModel.setLikeTotal(0l);
+            tutorialModel.setGeneralCode(CommonUtils.randomAlphaNumeric(10));
 
             String mediaType = CommonUtils.getExtensionMedia(tutorialModel.getMedialUrl());
             tutorialModel.setVcrType(CommonUtils.getTypeMedia(mediaType));
